@@ -18,5 +18,8 @@
         "psr-4": {
             "pouu69\\LaravelFacebookUpload\\": "src/LaravelFacebookUpload"
         }
+    },
+    "branch-alias": {
+        "dev-master": "1.x-dev"
     }
 }
