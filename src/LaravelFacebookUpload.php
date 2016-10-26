@@ -47,10 +47,10 @@ class LaravelFacebookUpload{
     /**
      * facebook 업로드 요청           
      */
-    public function upload(array $data, array $url){
+    public function upload(array $data){
     	$this->setData($data);
 
-	    $batchData = $this->setBatchPhotoUpload($url);
+	    $batchData = $this->setBatchPhotoUpload($data['url']);
 	    if(!$batchData) return $this->resMsg;
 
 	    $attachMediaIds = $this->batchPhotoUpload($batchData);
