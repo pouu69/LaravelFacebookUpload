@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "KwanUng\\FacebookUploadSdk\\": "src/FacebookUploadSdk"
+            "pouu69\\LaravelFacebookUpload\\": "src/LaravelFacebookUpload"
         }
     }
 }

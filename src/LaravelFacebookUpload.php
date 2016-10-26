@@ -1,8 +1,8 @@
-<?php namespace KwanUng\FacebookUploadSdk;
+<?php namespace pouu69\LaravelFacebookUpload;
 
 use \SammyK\LaravelFacebookSdk\LaravelFacebookSdk;
 
-class FacebookUploadSdk {
+class LaravelFacebookUpload {
     /** @var array response message */
     protected $resMsg = [];
     /** @var string 각 사용자의 access token requried */

@@ -1,11 +1,11 @@
-<?php namespace KwanUng\FacebookUploadSdk;
+<?php namespace pouu69\LaravelFacebookUpload;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \KwanUng\FacebookUploadSdk\FacebookUploadSdk
  */
-class FacebookFacade extends Facade
+class LaravelFacebookUploadFacade extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class FacebookFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'KwanUng\FacebookUploadSdk\FacebookUploadSdk';
+        return 'pouu69\LaravelFacebookUpload\LaravelFacebookUpload';
     }
 }

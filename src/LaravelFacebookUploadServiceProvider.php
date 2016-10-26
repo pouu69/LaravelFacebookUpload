@@ -1,8 +1,8 @@
-<?php namespace KwanUng\FacebookUploadSdk;
+<?php namespace pouu69\LaravelFacebookUpload;
 
 use Illuminate\Support\ServiceProvider;
 
-class FacebookUploadSdkServiceProvider extends ServiceProvider
+class LaravelFacebookUploadServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -28,8 +28,8 @@ class FacebookUploadSdkServiceProvider extends ServiceProvider
     public function register()
     {
         // Main Service
-        $this->app->bind('KwanUng\FacebookUploadSdk\FacebookUploadSdk', function ($app) {
-            return new FacebookUploadSdk();
+        $this->app->bind('pouu69\LaravelFacebookUpload\LaravelFacebookUpload', function ($app) {
+            return new LaravelFacebookUpload();
         });
     }
 }
