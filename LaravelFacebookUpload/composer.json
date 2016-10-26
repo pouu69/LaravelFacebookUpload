@@ -1,0 +1,21 @@
+{
+    "name": "tubloo/facebookupload",
+    "description": "facebook image upload provider",
+    "authors": [
+        {
+            "name": "KwanUng",
+            "email": "pouu69@gmail.com"
+        }
+    ],
+    "require": {
+    	"php": ">=5.5.0",
+    	"facebook/graph-sdk": "^5.0",
+    	"sammyk/laravel-facebook-sdk": "^3.0",
+    	"guzzlehttp/guzzle": "~5.3|~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "KwanUng\\FacebookUploadSdk\\": "src/FacebookUploadSdk"
+        }
+    }
+}
