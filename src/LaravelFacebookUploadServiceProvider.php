@@ -1,6 +1,8 @@
 <?php namespace pouu69\LaravelFacebookUpload;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Facades\App;
 
 class LaravelFacebookUploadServiceProvider extends ServiceProvider
 {
@@ -27,9 +29,9 @@ class LaravelFacebookUploadServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Main Service
-        $this->app->bind('pouu69\LaravelFacebookUpload\LaravelFacebookUpload', function ($app) {
-            return new LaravelFacebookUpload();
-        });
+        $this->app->singleton('pouu69\LaravelFacebookUpload\LaravelFacebookUpload', function ($app) {
+                return new LaravelFacebookUpload;
+            }
+        );
     }
 }
