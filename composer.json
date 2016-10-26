@@ -1,6 +1,7 @@
 {
     "name": "pouu69/laravel-facebook-upload",
     "description": "facebook image upload provider",
+    "license": "MIT",
     "authors": [
         {
             "name": "KwanUng",
@@ -17,5 +18,8 @@
         "psr-4": {
             "pouu69\\LaravelFacebookUpload\\": "src/LaravelFacebookUpload"
         }
-    }
+    },
+      "branch-alias": {
+          "dev-master": "1.x-dev"
+      }
 }
