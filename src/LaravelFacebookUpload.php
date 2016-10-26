@@ -2,7 +2,7 @@
 
 use \SammyK\LaravelFacebookSdk\LaravelFacebookSdk;
 
-class LaravelFacebookUpload {
+class LaravelFacebookUpload{
     /** @var array response message */
     protected $resMsg = [];
     /** @var string 각 사용자의 access token requried */
@@ -20,7 +20,8 @@ class LaravelFacebookUpload {
     private $fbSDK;
 
     public function __construct(){
-    	$this->fbSDK = new LaravelFacebookSdk;
+    	$this->fbSDK = \App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
+
 
     	$this->resMsg = [
             'status' => 'done',
@@ -34,7 +35,7 @@ class LaravelFacebookUpload {
      * @param Array $data parameter data객체
      */
     protected function setData(array $data){
-    	$data = (object)$params;
+    	$data = (object)$data;
 
 		$this->CARD_ID = $data->cardId;
 		$this->WHERE_SHARE = $data->whereShare;
