@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "pouu69\\LaravelFacebookUpload\\": "src/LaravelFacebookUpload"
+            "pouu69\\LaravelFacebookUpload\\": "src"
         }
     },
       "branch-alias": {
