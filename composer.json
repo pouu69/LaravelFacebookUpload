@@ -19,7 +19,9 @@
             "pouu69\\LaravelFacebookUpload\\": "src/LaravelFacebookUpload"
         }
     },
-    "branch-alias": {
-        "dev-master": "1.x-dev"
-    }
+  "extra": {
+      "branch-alias": {
+          "dev-master": "1.0-dev"
+      }
+  }
 }
