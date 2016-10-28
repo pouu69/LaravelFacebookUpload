@@ -68,16 +68,11 @@ Route::get('/facebook/upload', function(pouu69\LaravelFacebookUpload\LaravelFace
 - "facebook/graph-sdk": "^5.0"
 - "sammyk/laravel-facebook-sdk": "^3.0"
 
-#사용법
-> 페이스북 로그인 할 때 access_token을 세션에 저장 해놔야 사용이 가능하다. 
-> `session('facebook_access_token')` 와 같이 해야한다.
-
 ##페이스북 페이지 리스트 가져오기
 > 자신의 계정이 속한 페이스북 페이지 리스트를 가져올 수 있습니다.
 
 ```` php
 // 페이스북 로그인 상태를 유지 하고
-// session('facebook_access_token'); 으로 access_token을 저장 해논 상태 이후 사용한다.
 
 $fb = app(pouu69\LaravelFacebookUpload\LaravelFacebookUpload::class);
 /** @return array 페이지 리스트(안에 정보가 담겨있음) */
@@ -91,7 +86,7 @@ $pageList = $fb->getPageList();
 $data = [
 	"whereShare" : "", // 'me' 또는 'page' 로 구분,
 	"accessId" : "", // 'me' 또는 getPageList() 를 통해 받은 page의 'access_token'
-	"accessToken" : "" // 'me 또는 getPageList() 를 통해 받은 page의 'access_token',
+	"accessToken" : "" //게시할곳이 개인 피드일경우 페이스북 로그인시 받은 'acess_token'값, 페이지 일경우 getPageList() 를 통해 받은 page의 'access_token',
 	"message" : "" // feed에 보여질 메세지,
 	"url" : [] // 업로드 할 이미지 url's 
 ];
@@ -110,6 +105,7 @@ $result = [
 > 최초 로그인 하여 앱이 요청하는 권한승인(또는 취소) 했던 것들 권한 리스트를 가져온다.
 
 ```` php
+$fb->setTokenSession($sessionName);
 $array = $fb->getPermissions(); //[["email","granted"],["public_profile","granted"]];
 ````
 
