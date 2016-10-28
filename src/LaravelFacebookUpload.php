@@ -19,15 +19,26 @@ class LaravelFacebookUpload{
     /** @var class facebook sdk 객체 */
     private $fbSDK;
 
-    public function __construct(){
-    	$this->fbSDK = \App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
+    /** @var class session class */
+    private $session;
 
+    public function __construct(){
+        $this->session = new LaravelFacebookSession;
+    	$this->fbSDK = \App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
 
     	$this->resMsg = [
             'status' => 'done',
             'message' => '',
             'data' => ''
         ];
+    }
+
+    /**
+     * 개인 페북 엑세스토큰 설정
+     * @param string $sessionName facebook 엑세스토큰 저장한 세션 이름
+     */
+    public function setTokenSession($sessionName){
+        $this->session->set($sessionName);
     }
 
     /**
@@ -40,7 +51,7 @@ class LaravelFacebookUpload{
 		$this->CARD_ID = $data->cardId;
 		$this->WHERE_SHARE = $data->whereShare;
 		$this->ACCESS_ID = $data->accessId;
-		$this->ACCESS_TOKEN = $data->whereShare === 'me' ? session('facebook_access_token') : $data->accessToken;
+		$this->ACCESS_TOKEN = $data->accessToken; // me 일경우 $data->accessToken은 페북개인엑세스토큰값
 		$this->MESSAGE = $data->message;
     }
 
@@ -89,7 +100,7 @@ class LaravelFacebookUpload{
    	protected function account(){
 		try {
 			$endPoint = '/me/accounts';
-			$resp = $this->fbSDK->get($endPoint, session('facebook_access_token'));
+			$resp = $this->fbSDK->get($endPoint, $this->session->get());
 		} catch(\Facebook\Exceptions\FacebookResponseException $e) {
 			$this->setResMsg('error', $e->getMessage());
 			return false;
@@ -124,7 +135,7 @@ class LaravelFacebookUpload{
     public function getPermissions(){
         try{
             $endPoint = '/me/permissions';
-            $resp = $this->fbSDK->get($endPoint, session('facebook_access_token'));
+            $resp = $this->fbSDK->get($endPoint,  $this->session->get());
             $graphEdge= $resp->getGraphEdge();
 
             $perms = [];
