@@ -118,6 +118,34 @@ class LaravelFacebookUpload{
     }
 
     /**
+     * 로그인 사용자 permissin 가져오기
+     * @return array permission's
+     */
+    public function getPermissions(){
+        try{
+            $endPoint = '/me/permissions';
+            $resp = $this->fbSDK->get($endPoint, session('facebook_access_token'));
+            $graphEdge= $resp->getGraphEdge();
+
+            $perms = [];
+            foreach($graphEdge as $key => $val){
+                $perm = [];
+                foreach ($val as $k => $v) {
+                    $perm[] = $v;
+                }
+                $perms[] = $perm;
+            }
+            return $perms;
+        }catch(\Facebook\Exceptions\FacebookResponseException $e){
+            $this->setResMsg('error', $e->getMessage());
+            return false;
+        }catch(\Facebook\Exceptions\FacebookSDKException $e) {
+            $this->setResMsg('error', $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
      * 최종적으로 feed에 퍼블리싱 하는 작업
      * @param  array  $attachMediaIds 퍼블리싱할 이미지들
      * @return object                 response
