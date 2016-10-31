@@ -79,15 +79,16 @@ Route::get('/facebook/upload', function(pouu69\LaravelFacebookUpload\LaravelFace
 
 $fb = app(pouu69\LaravelFacebookUpload\LaravelFacebookUpload::class);
 /** @return array 페이지 리스트(안에 정보가 담겨있음) */
-$pageList = $fb->getPageList();
+$fb->setTokenSession($sessionName); 	// access_token 을 가지고 있는 session값 을 얻기 위하여 세션네임을 설정
+$pageList = $fb->getPageList();		//페이지 리스트 가져오기
 ````
+
 ##페이스북 피드에 이미지 업로드
 > 개인 피드 또는 페이지에 이미지를 업로드 할 수 있게 도와주고, 한번의 포스팅으로 여러 이미지를 동시에 업로드 합니다.
 
 ```` php
 // request Data set
 $data = [
-	"fbSessionName" : "" // facebook access_token을 담고 있는 세션이름 
 	"whereShare" : "", // 'me'(개인) 또는 'page'(페이지) 로 구분,
 	"accessId" : "", // 'me' 또는 getPageList() 를 통해 받은 page의 'access_token'(페이지로 업로드할때는  페이지 access_token이 필요)
 	"accessToken" : "" //게시할곳이 개인 피드일경우 페이스북 로그인시 받은 'acess_token'값, 페이지 일경우 getPageList() 를 통해 받은 page의 'access_token',
@@ -95,7 +96,9 @@ $data = [
 	"url" : [] // 업로드 할 이미지 url's 
 ];
 
-$result = $fb->upload($data);
+$fb->setTokenSession($sessionName); 	// access_token 을 가지고 있는 session값 을 얻기 위하여 세션네임을 설정
+$result = $fb->upload($data);	 	//업로드 하기
+
 // result 반환 값
 $result = [
             'status' => '', // 'done' 또는 'error'
