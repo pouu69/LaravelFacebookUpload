@@ -68,6 +68,9 @@ Route::get('/facebook/upload', function(pouu69\LaravelFacebookUpload\LaravelFace
 - "facebook/graph-sdk": "^5.0"
 - "sammyk/laravel-facebook-sdk": "^3.0"
 
+##require
+> 모든 api호출은 페이스북 로그인 상태로 access_token이 발급된 상태로 세션에 삽입된 상황이여야 한다.
+
 ##페이스북 페이지 리스트 가져오기
 > 자신의 계정이 속한 페이스북 페이지 리스트를 가져올 수 있습니다.
 
@@ -84,8 +87,9 @@ $pageList = $fb->getPageList();
 ```` php
 // request Data set
 $data = [
-	"whereShare" : "", // 'me' 또는 'page' 로 구분,
-	"accessId" : "", // 'me' 또는 getPageList() 를 통해 받은 page의 'access_token'
+	"fbSessionName" : "" // facebook access_token을 담고 있는 세션이름 
+	"whereShare" : "", // 'me'(개인) 또는 'page'(페이지) 로 구분,
+	"accessId" : "", // 'me' 또는 getPageList() 를 통해 받은 page의 'access_token'(페이지로 업로드할때는  페이지 access_token이 필요)
 	"accessToken" : "" //게시할곳이 개인 피드일경우 페이스북 로그인시 받은 'acess_token'값, 페이지 일경우 getPageList() 를 통해 받은 page의 'access_token',
 	"message" : "" // feed에 보여질 메세지,
 	"url" : [] // 업로드 할 이미지 url's 
