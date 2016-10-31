@@ -59,7 +59,7 @@ class LaravelFacebookUpload{
      */
     public function upload(array $data){
     	$this->setData($data);
-
+	$this->setTokenSession($data['fbSessionName']);
 	    $batchData = $this->setBatchPhotoUpload($data['url']);
 	    if(!$batchData) return $this->resMsg;
 
