@@ -48,10 +48,10 @@ class LaravelFacebookUpload{
     protected function setData(array $data){
     	$data = (object)$data;
 
-		$this->WHERE_SHARE = $data->whereShare;
-		$this->ACCESS_ID = $data->accessId;
-		$this->ACCESS_TOKEN = $data->accessToken; // me 일경우 $data->accessToken은 페북개인엑세스토큰값
-		$this->MESSAGE = $data->message;
+        $this->WHERE_SHARE = $data->whereShare;
+        $this->ACCESS_ID = $data->accessId;
+        $this->ACCESS_TOKEN = $data->whereShare === 'me' ? $this->session->get() : $data->accessToken; // me 일경우 $data->accessToken은 페북개인엑세스토큰값
+        $this->MESSAGE = $data->message;
     }
 
     /**
