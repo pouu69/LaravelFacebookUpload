@@ -91,7 +91,6 @@ $pageList = $fb->getPageList();		//페이지 리스트 가져오기
 $data = [
 	"whereShare" : "", // 'me'(개인) 또는 'page'(페이지) 로 구분,
 	"accessId" : "", // 'me' 또는 getPageList() 를 통해 받은 page의 'access_token'(페이지로 업로드할때는  페이지 access_token이 필요)
-	"accessToken" : "" //게시할곳이 개인 피드일경우 페이스북 로그인시 받은 'acess_token'값, 페이지 일경우 getPageList() 를 통해 받은 page의 'access_token',
 	"message" : "" // feed에 보여질 메세지,
 	"url" : [] // 업로드 할 이미지 url's 
 ];
